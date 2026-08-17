@@ -1,59 +1,176 @@
-Transcript Analyzer (ASR Evaluation)
-Description
-Transcript Analyzer is a Python-based tool for evaluating Automatic Speech Recognition (ASR) model outputs by calculating Word Error Rate (WER) against a reference transcript. The tool supports comparison of multiple transcription outputs to benchmark model performance.
-This project was developed as part of an academic research and coursework project focused on speech recognition and natural language processing evaluation.
+# 🎙️ Transcript Analyzer — ASR Evaluation
 
-Technologies Used
-Python
-Natural Language Processing (NLP)
-jiwer (WER evaluation library)
+A Python-based evaluation tool for comparing **Automatic Speech Recognition (ASR)** outputs against reference transcripts using **Word Error Rate (WER)**.
 
-Project Features
-Loads and processes reference and hypothesis transcripts
-Computes Word Error Rate (WER) for multiple ASR outputs
-Ranks transcription models based on accuracy
-Simple, script-based evaluation workflow
+The project provides a lightweight workflow for measuring transcription errors, comparing multiple ASR outputs, and identifying which system produces the closest transcription to a reference.
 
-Learning Objectives
-ASR evaluation metrics (WER)
-NLP text preprocessing and comparison
-Experimental benchmarking of ML models
-Research-oriented scripting and result analysis
+---
 
-Future Improvements 
-1. Advanced ASR Metrics
-Add Character Error Rate (CER) for languages with complex morphology
-Support Sentence Error Rate (SER) for full-utterance evaluation
-Why it matters: Shows deeper understanding of speech recognition evaluation beyond WER.
+## 🎯 Project Objective
 
-2. Text Normalization Pipeline
-Normalize text before evaluation (lowercasing, punctuation removal, number expansion)
-Handle fillers (uh, um) and hesitations
-Why it matters: This is exactly what real ASR research pipelines do.
+Automatic Speech Recognition systems can produce transcripts that appear similar while containing different substitution, deletion, and insertion errors.
 
-3. Model-wise Result Export
-Export evaluation results to CSV or JSON
-Include model name, WER score, and ranking
-Why it matters: Makes results reproducible and research-ready.
+This project explores how transcription quality can be evaluated quantitatively using **Word Error Rate (WER)**.
 
-4. Visualization of Results
-Plot WER comparison using matplotlib / seaborn
-Bar charts comparing ASR models
-Why it matters: Recruiters love seeing “analysis + visualization”.
+The tool:
 
-5. Dataset Scaling
-Support multiple reference transcripts
-Batch evaluation across datasets
-Why it matters: Moves the project from “assignment” → “research tool”.
+* Loads reference and hypothesis transcripts
+* Calculates WER for ASR-generated outputs
+* Compares results across multiple hypotheses
+* Ranks outputs according to transcription accuracy
 
-6. Command-Line Interface (CLI)
-Run evaluations using CLI arguments:
-python evaluate.py --data data/ --metric wer
-Why it matters: Signals engineering maturity.
+---
 
-7. Integration with ASR Models
-Directly evaluate outputs from:
-OpenAI Whisper
-Google Speech-to-Text
-Vosk / Wav2Vec2
-Why it matters: This connects ML theory to real systems.
+## 📏 Word Error Rate
+
+Word Error Rate is one of the most widely used metrics for evaluating ASR systems.
+
+It measures the number of word-level errors relative to the number of words in the reference transcript.
+
+```text
+WER = (Substitutions + Deletions + Insertions) / Reference Words
+```
+
+Lower WER generally indicates that a transcription is lexically closer to the reference.
+
+---
+
+## 🔬 Evaluation Workflow
+
+```text
+Reference Transcript
+        │
+        ├──────────────┐
+        │              │
+        ↓              ↓
+ASR Output A      ASR Output B
+        │              │
+        ↓              ↓
+     WER(A)          WER(B)
+        │              │
+        └──────┬───────┘
+               ↓
+        Result Comparison
+               ↓
+         Model Ranking
+```
+
+This creates a simple and reproducible workflow for comparing transcription outputs.
+
+---
+
+## 🚀 Features
+
+* Reference-to-hypothesis transcript comparison
+* Word Error Rate calculation
+* Support for multiple ASR outputs
+* Model/output comparison
+* Accuracy-based ranking
+* Lightweight Python workflow
+
+---
+
+## 🛠️ Tech Stack
+
+**Language:** Python
+**Domain:** Natural Language Processing · Automatic Speech Recognition
+**Evaluation:** Word Error Rate (WER)
+**Library:** jiwer
+
+---
+
+## 📁 Project Structure
+
+```text
+transcript_analyzer/
+│
+├── data/
+│   └── ...
+│
+├── src/
+│   └── ...
+│
+├── requirements.txt
+└── README.md
+```
+
+The `data/` directory contains the transcripts used for evaluation, while `src/` contains the evaluation logic.
+
+---
+
+## 🚀 Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/hritika20002/transcript_analyzer.git
+cd transcript_analyzer
+```
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+The evaluation scripts can then be run from the `src/` directory using the provided transcript data.
+
+---
+
+## 🧪 Example
+
+Given a reference transcript:
+
+```text
+the quick brown fox jumps over the lazy dog
+```
+
+and an ASR hypothesis:
+
+```text
+the quick brown fox jumped over the lazy dog
+```
+
+the evaluator compares the two transcripts and calculates their Word Error Rate.
+
+When multiple hypotheses are provided, their WER scores can be compared to determine which output is lexically closest to the reference.
+
+---
+
+## 💡 What I Learned
+
+This project helped me develop practical experience with:
+
+* Automatic Speech Recognition evaluation
+* Word Error Rate and transcription errors
+* NLP text comparison
+* Reference/hypothesis evaluation workflows
+* Python-based research tooling
+* Experimental model comparison
+* Reproducible evaluation workflows
+
+It also introduced me to an important limitation of ASR evaluation: **lexical similarity does not always capture whether a transcription preserves the meaning of the original speech.**
+
+---
+
+## 🔭 Future Improvements
+
+Potential extensions include:
+
+* Character Error Rate (CER)
+* Text normalization before evaluation
+* Batch evaluation across larger datasets
+* CSV/JSON result export
+* Visualization of evaluation results
+* Command-line interface
+* Additional lexical and semantic evaluation metrics
+
+---
+
+## 👩‍💻 Author
+
+**Hritika Sharma**
+
+Computer Science Graduate · AI & Data Developer
+
+[Portfolio](https://portfolio-pink-ten-96.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/hritikasharma2002/)
